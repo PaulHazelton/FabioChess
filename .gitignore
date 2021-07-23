@@ -2,6 +2,7 @@
 [Tt]humbs.db
 *.DS_Store
 *.cache
+obj
 
 #Visual Studio files
 *.pidb
@@ -56,3 +57,4 @@ monodroid*.msi
 /CompiledContent/Windows/IgnoreMe.dll
 *.cachefile
 *.dll
+FabioChess/obj/Debug/netcoreapp3.1/FabioChess.assets.cache
