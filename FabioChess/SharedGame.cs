@@ -42,9 +42,21 @@ namespace FabioChess
 
 		protected override void Draw(GameTime gameTime)
 		{
-			GraphicsDevice.Clear(Color.CornflowerBlue);
+			GraphicsDevice.Clear(Color.Black);
 
-			// TODO: Add your drawing code here
+			_spriteBatch.Begin();
+
+			Texture2D rect = new Texture2D(GraphicsDevice, 80, 30);
+
+			Color[] data = new Color[80 * 30];
+			for (int i = 0; i < data.Length; ++i)
+				data[i] = Color.White;
+			rect.SetData(data);
+
+			Vector2 coor = new Vector2(10, 20);
+			_spriteBatch.Draw(rect, coor, Color.White);
+
+			_spriteBatch.End();
 
 			base.Draw(gameTime);
 		}
