@@ -54,7 +54,9 @@ namespace FabioChess
 			rect.SetData(data);
 
 			Vector2 coor = new Vector2(10, 20);
-			_spriteBatch.Draw(rect, coor, Color.White);
+			// _spriteBatch.Draw(rect, coor, Color.White);
+
+			_spriteBatch.Draw(rect, coor, null, Color.White, 1, new Vector2(0, 0), new Vector2(1, 1), SpriteEffects.None, 1);
 
 			_spriteBatch.End();
 
