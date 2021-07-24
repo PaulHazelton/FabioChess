@@ -1,4 +1,9 @@
-FabioChess/bin/
-FabioChess/obj/
-FabioChess/Content/obj/
-FabioChess/Content/bin/
+# Build results
+[Dd]ebug/
+[Dd]ebugPublic/
+[Rr]elease/
+x64/
+build/
+bld/
+[Bb]in/
+[Oo]bj/
