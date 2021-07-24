@@ -9,6 +9,8 @@ namespace FabioChess
 		private GraphicsDeviceManager _graphics;
 		private SpriteBatch _spriteBatch;
 
+		private SpriteFont font;
+
 		public SharedGame()
 		{
 			_graphics = new GraphicsDeviceManager(this);
@@ -26,6 +28,8 @@ namespace FabioChess
 		protected override void LoadContent()
 		{
 			_spriteBatch = new SpriteBatch(GraphicsDevice);
+
+			font = Content.Load<SpriteFont>("Arial");
 
 			// TODO: use this.Content to load your game content here
 		}
@@ -57,6 +61,8 @@ namespace FabioChess
 			// _spriteBatch.Draw(rect, coor, Color.White);
 
 			_spriteBatch.Draw(rect, coor, null, Color.White, 1, new Vector2(0, 0), new Vector2(1, 1), SpriteEffects.None, 1);
+
+			_spriteBatch.DrawString(font, "Yay!", new Vector2(200, 200), Color.White);
 
 			_spriteBatch.End();
 
