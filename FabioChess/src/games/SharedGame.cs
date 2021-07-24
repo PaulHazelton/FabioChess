@@ -23,6 +23,8 @@ namespace FabioChess
 			// TODO: Add your initialization logic here
 			Window.AllowUserResizing = true;
 
+			this.Components.Add(new ChessBoard(this));
+
 			base.Initialize();
 		}
 
