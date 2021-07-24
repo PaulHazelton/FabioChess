@@ -6,14 +6,14 @@ namespace FabioChess
 {
 	public class SharedGame : Game
 	{
-		private GraphicsDeviceManager _graphics;
-		private SpriteBatch _spriteBatch;
+		private GraphicsDeviceManager graphics;
+		private SpriteBatch spriteBatch;
 
 		private SpriteFont font;
 
 		public SharedGame()
 		{
-			_graphics = new GraphicsDeviceManager(this);
+			graphics = new GraphicsDeviceManager(this);
 			Content.RootDirectory = "Content";
 			IsMouseVisible = true;
 		}
@@ -27,7 +27,7 @@ namespace FabioChess
 
 		protected override void LoadContent()
 		{
-			_spriteBatch = new SpriteBatch(GraphicsDevice);
+			spriteBatch = new SpriteBatch(GraphicsDevice);
 
 			font = Content.Load<SpriteFont>("Arial");
 
@@ -48,7 +48,7 @@ namespace FabioChess
 		{
 			GraphicsDevice.Clear(Color.Black);
 
-			_spriteBatch.Begin();
+			spriteBatch.Begin();
 
 			Texture2D rect = new Texture2D(GraphicsDevice, 80, 30);
 
@@ -60,11 +60,11 @@ namespace FabioChess
 			Vector2 coor = new Vector2(10, 20);
 			// _spriteBatch.Draw(rect, coor, Color.White);
 
-			_spriteBatch.Draw(rect, coor, null, Color.White, 1, new Vector2(0, 0), new Vector2(1, 1), SpriteEffects.None, 1);
+			spriteBatch.Draw(rect, coor, null, Color.White, 1, new Vector2(0, 0), new Vector2(1, 1), SpriteEffects.None, 1);
 
-			_spriteBatch.DrawString(font, "Yay!", new Vector2(200, 200), Color.White);
+			spriteBatch.DrawString(font, "Yay!", new Vector2(200, 200), Color.White);
 
-			_spriteBatch.End();
+			spriteBatch.End();
 
 			base.Draw(gameTime);
 		}
