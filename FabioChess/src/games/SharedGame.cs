@@ -23,7 +23,11 @@ namespace FabioChess
 			// TODO: Add your initialization logic here
 			Window.AllowUserResizing = true;
 
-			this.Components.Add(new ChessBoard(this));
+			var chessBoard = new ChessBoard(this);
+
+			this.Components.Add(chessBoard);
+
+			Window.ClientSizeChanged += (sender, e) => chessBoard.UpdateSize();
 
 			base.Initialize();
 		}
@@ -52,19 +56,6 @@ namespace FabioChess
 			GraphicsDevice.Clear(Color.Black);
 
 			spriteBatch.Begin();
-
-			int w = GraphicsDevice.Viewport.Width / 2;
-			int h = GraphicsDevice.Viewport.Height / 2;
-			Texture2D rect = new Texture2D(GraphicsDevice, w, h);
-
-			Color[] data = new Color[w * h];
-			for (int i = 0; i < data.Length; ++i)
-				data[i] = new Color((i * 255) / (w * h), 0, 0);
-			rect.SetData(data);
-
-			Vector2 position = new Vector2(10, 10);
-
-			spriteBatch.Draw(rect, position, null, Color.White, 0, new Vector2(0, 0), new Vector2(1, 1), SpriteEffects.None, 1);
 
 			spriteBatch.DrawString(font, "Yay!", new Vector2(200, 200), Color.Red);
 
