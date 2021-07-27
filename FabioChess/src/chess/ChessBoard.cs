@@ -47,12 +47,29 @@ namespace FabioChess
 			{
 			for (int i = 0; i < 4; i++)
 			{
-				spriteBatch.Draw(lightRectangle, new Vector2(i*(width/8)*2+x, y+(height/8)*j), null, Color.White, 0, new Vector2(0, 0), new Vector2(width/8, height/8), SpriteEffects.None, 0);
-				spriteBatch.Draw(darkRectangle, new Vector2(i*(width/8)*2+x+(width/8), y+(height/8)*j), null, Color.White, 0, new Vector2(0, 0), new Vector2(width/8, height/8), SpriteEffects.None, 0);
+				if (j % 2 == 0)
+				{
+					evenrow(i,j);
 
+				}
+				else
+				{
+					oddrow (i,j);
+				} 
 			}}
 
 			spriteBatch.End();
+		}
+		private void evenrow (int i, int j)
+		{
+				spriteBatch.Draw(lightRectangle, new Vector2(i*(width/8)*2+x, y+(height/8)*j), null, Color.White, 0, new Vector2(0, 0), new Vector2(width/8, height/8), SpriteEffects.None, 0);
+				spriteBatch.Draw(darkRectangle, new Vector2(i*(width/8)*2+x+(width/8), y+(height/8)*j), null, Color.White, 0, new Vector2(0, 0), new Vector2(width/8, height/8), SpriteEffects.None, 0);
+
+		}
+		private void oddrow (int i, int j)
+		{
+		spriteBatch.Draw(lightRectangle, new Vector2(i*(width/8)*2+x+(width/8), y+(height/8)*j), null, Color.White, 0, new Vector2(0, 0), new Vector2(width/8, height/8), SpriteEffects.None, 0);
+		spriteBatch.Draw(darkRectangle, new Vector2(i*(width/8)*2+x, y+(height/8)*j), null, Color.White, 0, new Vector2(0, 0), new Vector2(width/8, height/8), SpriteEffects.None, 0);	
 		}
 
 		public void UpdateSize()
