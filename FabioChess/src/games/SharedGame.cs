@@ -23,7 +23,7 @@ namespace FabioChess
 			// TODO: Add your initialization logic here
 			Window.AllowUserResizing = true;
 
-			var chessBoard = new ChessBoard(this);
+			ChessBoard chessBoard = new ChessBoard(this);
 
 			this.Components.Add(chessBoard);
 
@@ -57,7 +57,7 @@ namespace FabioChess
 
 			spriteBatch.Begin();
 
-			spriteBatch.DrawString(font, "Yay!", new Vector2(200, 200), Color.Red);
+			// spriteBatch.DrawString(font, "Yay!", new Vector2(200, 200), Color.Red);
 
 			spriteBatch.End();
 

@@ -50,6 +50,7 @@ namespace FabioChess
 			int screenHeight = Game.Window.ClientBounds.Height;
 
 			width = screenHeight < screenWidth ? screenHeight : screenWidth;
+
 			height = width;
 			width -= 20;
 			height -= 20;
