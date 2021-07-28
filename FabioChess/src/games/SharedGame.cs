@@ -14,8 +14,17 @@ namespace FabioChess
 		public SharedGame()
 		{
 			graphics = new GraphicsDeviceManager(this);
+
+			graphics.PreparingDeviceSettings += Graphics_PreparingDeviceSettings;
+
 			Content.RootDirectory = "Content";
 			IsMouseVisible = true;
+		}
+
+		private void Graphics_PreparingDeviceSettings(object sender, PreparingDeviceSettingsEventArgs e)
+		{
+			graphics.PreferMultiSampling = true;
+			e.GraphicsDeviceInformation.PresentationParameters.MultiSampleCount = 8;
 		}
 
 		protected override void Initialize()
