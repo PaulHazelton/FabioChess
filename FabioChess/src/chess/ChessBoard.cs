@@ -11,8 +11,11 @@ namespace FabioChess
 		private Texture2D lightRectangle;
 		private Texture2D darkRectangle;
 		private SpriteBatch spriteBatch;
-		private Color lightcolor = new Color (240, 217, 166);
-		private Color darkcolor = new Color (181,136,99); 
+		private Color lightcolor = new Color(240, 217, 166);
+		private Color darkcolor = new Color(181, 136, 99);
+
+		private Texture2D pawn;
+
 		public ChessBoard(Game game) : base(game)
 		{
 			this.UpdateSize();
@@ -32,6 +35,10 @@ namespace FabioChess
 			for (int i = 0; i < data.Length; ++i)
 				data[i] = darkcolor;
 			darkRectangle.SetData(data);
+
+			// Load pieces
+			pawn = this.Game.Content.Load<Texture2D>("pd");
+
 			base.Initialize();
 		}
 
@@ -45,31 +52,33 @@ namespace FabioChess
 			spriteBatch.Begin();
 			for (int j = 0; j < 8; j++)
 			{
-			for (int i = 0; i < 4; i++)
-			{
-				if (j % 2 == 0)
+				for (int i = 0; i < 4; i++)
 				{
-					evenrow(i,j);
-
+					if (j % 2 == 0)
+					{
+						evenrow(i, j);
+					}
+					else
+					{
+						oddrow(i, j);
+					}
 				}
-				else
-				{
-					oddrow (i,j);
-				} 
-			}}
+			}
+
+			spriteBatch.Draw(pawn, new Vector2(x, y), Color.White);
 
 			spriteBatch.End();
 		}
-		private void evenrow (int i, int j)
+		private void evenrow(int i, int j)
 		{
-				spriteBatch.Draw(lightRectangle, new Vector2(i*(width/8)*2+x, y+(height/8)*j), null, Color.White, 0, new Vector2(0, 0), new Vector2(width/8, height/8), SpriteEffects.None, 0);
-				spriteBatch.Draw(darkRectangle, new Vector2(i*(width/8)*2+x+(width/8), y+(height/8)*j), null, Color.White, 0, new Vector2(0, 0), new Vector2(width/8, height/8), SpriteEffects.None, 0);
+			spriteBatch.Draw(lightRectangle, new Vector2(i * (width / 8) * 2 + x, y + (height / 8) * j), null, Color.White, 0, new Vector2(0, 0), new Vector2(width / 8, height / 8), SpriteEffects.None, 0);
+			spriteBatch.Draw(darkRectangle, new Vector2(i * (width / 8) * 2 + x + (width / 8), y + (height / 8) * j), null, Color.White, 0, new Vector2(0, 0), new Vector2(width / 8, height / 8), SpriteEffects.None, 0);
 
 		}
-		private void oddrow (int i, int j)
+		private void oddrow(int i, int j)
 		{
-		spriteBatch.Draw(lightRectangle, new Vector2(i*(width/8)*2+x+(width/8), y+(height/8)*j), null, Color.White, 0, new Vector2(0, 0), new Vector2(width/8, height/8), SpriteEffects.None, 0);
-		spriteBatch.Draw(darkRectangle, new Vector2(i*(width/8)*2+x, y+(height/8)*j), null, Color.White, 0, new Vector2(0, 0), new Vector2(width/8, height/8), SpriteEffects.None, 0);	
+			spriteBatch.Draw(lightRectangle, new Vector2(i * (width / 8) * 2 + x + (width / 8), y + (height / 8) * j), null, Color.White, 0, new Vector2(0, 0), new Vector2(width / 8, height / 8), SpriteEffects.None, 0);
+			spriteBatch.Draw(darkRectangle, new Vector2(i * (width / 8) * 2 + x, y + (height / 8) * j), null, Color.White, 0, new Vector2(0, 0), new Vector2(width / 8, height / 8), SpriteEffects.None, 0);
 		}
 
 		public void UpdateSize()
