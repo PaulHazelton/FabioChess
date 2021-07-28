@@ -65,15 +65,16 @@ namespace FabioChess
 				}
 			}
 
-			spriteBatch.Draw(pawn, new Vector2(x, y), Color.White);
+			Draw2(pawn, new Vector2(x, y), new Vector2((float)width/(64*8),(float)height/(64*8)));
 
 			spriteBatch.End();
 		}
 		private void evenrow(int i, int j)
 		{
-			spriteBatch.Draw(lightRectangle, new Vector2(i * (width / 8) * 2 + x, y + (height / 8) * j), null, Color.White, 0, new Vector2(0, 0), new Vector2(width / 8, height / 8), SpriteEffects.None, 0);
-			spriteBatch.Draw(darkRectangle, new Vector2(i * (width / 8) * 2 + x + (width / 8), y + (height / 8) * j), null, Color.White, 0, new Vector2(0, 0), new Vector2(width / 8, height / 8), SpriteEffects.None, 0);
-
+			// spriteBatch.Draw(lightRectangle, new Vector2(i * (width / 8) * 2 + x, y + (height / 8) * j), null, Color.White, 0, new Vector2(0, 0), new Vector2(width / 8, height / 8), SpriteEffects.None, 0);
+			Draw2(lightRectangle,new Vector2(i * (width / 8) * 2 + x, y + (height / 8) * j), new Vector2(width / 8, height / 8));
+			// spriteBatch.Draw(darkRectangle, new Vector2(i * (width / 8) * 2 + x + (width / 8), y + (height / 8) * j), null, Color.White, 0, new Vector2(0, 0), new Vector2(width / 8, height / 8), SpriteEffects.None, 0);
+			Draw2(darkRectangle, new Vector2(i * (width / 8) * 2 + x + (width / 8), y + (height / 8) * j), new Vector2(width / 8, height / 8));
 		}
 		private void oddrow(int i, int j)
 		{
@@ -94,6 +95,10 @@ namespace FabioChess
 
 			x = (screenWidth - width) / 2;
 			y = (screenHeight - height) / 2;
+		}
+		private void Draw2 (Texture2D texture, Vector2 position, Vector2 scale)
+		{
+			spriteBatch.Draw (texture, position, null, Color.White, 0, new Vector2(0, 0), scale, SpriteEffects.None, 0);	
 		}
 	}
 }
