@@ -8,8 +8,9 @@ namespace FabioChess
 	{
 		private GraphicsDeviceManager graphics;
 		private SpriteBatch spriteBatch;
-
 		private SpriteFont font;
+
+		private ChessBoard chessBoard;
 
 		public SharedGame()
 		{
@@ -32,9 +33,7 @@ namespace FabioChess
 			// TODO: Add your initialization logic here
 			Window.AllowUserResizing = true;
 
-			ChessBoard chessBoard = new ChessBoard(this);
-
-			this.Components.Add(chessBoard);
+			chessBoard = new ChessBoard(this);
 
 			Window.ClientSizeChanged += (sender, e) => chessBoard.UpdateSize();
 
@@ -44,10 +43,10 @@ namespace FabioChess
 		protected override void LoadContent()
 		{
 			spriteBatch = new SpriteBatch(GraphicsDevice);
-
 			font = Content.Load<SpriteFont>("Arial");
 
-			// TODO: use this.Content to load your game content here
+			chessBoard.SpriteBatch = spriteBatch;
+			chessBoard.LoadContent(GraphicsDevice);
 		}
 
 		protected override void Update(GameTime gameTime)
@@ -66,6 +65,7 @@ namespace FabioChess
 
 			spriteBatch.Begin();
 
+			chessBoard.Draw(gameTime, spriteBatch);
 			// spriteBatch.DrawString(font, "Yay!", new Vector2(200, 200), Color.Red);
 
 			spriteBatch.End();
